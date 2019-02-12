@@ -1,10 +1,11 @@
+require("dotenv").config();
+
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "exampledb",
-    "host": "127.0.0.1",
-    "port": 8889,
+    "username": process.env.MYSQL_USERNAME,
+    "password": process.env.PASS,
+    "database": "traffic_db",
+    "host": process.env.HOST,
     "dialect": "mysql"
   },
   "test": {
