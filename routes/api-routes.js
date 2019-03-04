@@ -46,6 +46,42 @@ module.exports = function (app) {
             .then(() => res.redirect('/daily'))
     });
     app.post('/monthly/:user_id', (req, res) => {
+        //counting next week date to add to the weeklyAt 
+
+        
+        console.log('=========days alive=======')
+        console.log((Moment([1986, 4, 24]).diff([2019,3,4],'days'))* -1)
+        console.log('=========days alive=======')
+        console.log('=========month=======')
+        console.log(Moment().format('dddd')  )
+        var dayToday = Moment().format('dddd')
+        switch (dayToday) {
+            case 'Monday':
+                console.log("Mon", Moment().day(dayToday).add(5, 'days').format('MM'+'/'+'DD'))
+                break;
+                case 'Tuesday':
+                console.log("Tue",Moment().day(dayToday).add(4, 'days').format('MM'+'/'+'DD'))
+                break;
+                case 'Wednesday':
+                console.log("wed",Moment().day(dayToday).add(3, 'days').format('MM'+'/'+'DD'))
+                break;
+                case 'Thursday':
+                console.log("thu",Moment().day(dayToday).add(2, 'days').format('MM'+'/'+'DD'))
+                break;
+                case 'Friday':
+                console.log("Fri",Moment().day(dayToday).add(1, 'days').format('MM'+'/'+'DD'))
+                break;
+                case 'Saturday':
+                console.log("sat",Moment().day(dayToday).add(7, 'days').format('MM'+'/'+'DD'))
+                break;
+                case 'Sunday':
+                console.log("Sun",Moment().day(dayToday).add(6, 'days').format('MM'+'/'+'DD'))
+                break;
+        
+            default:
+                break;
+        }
+        console.log('=========month=======')
          Monthly.create({...req.body, userId: req.params.user_id})
             .then(() => res.redirect('/monthly'))
     })
