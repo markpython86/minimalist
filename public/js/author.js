@@ -1,9 +1,10 @@
 $(document).ready(function() {
   // Getting references to the name input and author container, as well as the table body
-  var nameInput = $("#author-full-name");
+  var nameInput = $("#author-name");
+  var lastName = $("#author-last");
   var username = $("#author-username");
   var password = $("#author-password");
-  var birthday = $("#author-birthday");;
+  var birthday = $("#author-birthday");
   var authorList = $("tbody");
   var authorContainer = $(".author-container");
   // Adding event listeners to the form to create a new object, and the button to delete
@@ -21,8 +22,7 @@ $(document).ready(function() {
     if (
       !nameInput
         .val()
-        .trim()
-        .trim()
+        
     ) {
       return;
     }
@@ -58,7 +58,6 @@ $(document).ready(function() {
 
   // Function for creating a new list row for authors
   function createAuthorRow(authorData) {
-    console.log("**************************" + authorData.birthday);;
     window.location.href = "/daily?author_id=" + authorData.id;
 
     var newTr = $("<tr>");
@@ -108,7 +107,6 @@ $(document).ready(function() {
       .remove();
     authorContainer.children(".alert").remove();
     if (rows.length) {
-      console.log(rows);
       authorList.prepend(rows);
     } else {
       renderEmpty();
@@ -133,8 +131,7 @@ $(document).ready(function() {
     $.ajax({
       method: "DELETE",
       url: "/api/authors/" + id
-    })
-      .then(getAuthors);
+    }).then(getAuthors);
   }
 });
 

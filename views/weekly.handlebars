@@ -1,26 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" href="#">Minima<strong>list</strong></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Daily</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Weekly <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Monthly</a>
-            </li>
-        </ul>
-        <span class="navbar-text">
-            Login
-        </span>
-    </div>
-</nav>
+
 
 {{!-- Weekly card layout. --}}
 
@@ -29,13 +7,14 @@
 
         {{!-- Add new entry card. --}}
         <div class="card mb-3 col-sm-12 col-lg-6 col-xl-4">
-            <div id="plusButton">
-                <span>+</span>
+            <div class="plusButton">
+                <span class="add"><a href="/monthly/new">+</a></span>
             </div>
         </div>
 
 
         {{!-- Main weekly card. --}}
+        {{#each weekly}}
         <div class="card mb-3 col-sm-12 col-lg-6 col-xl-4">
 
             <div class="card-header bg-transparent">
@@ -46,26 +25,26 @@
             </div>
 
             <div class="card-body">
-                <div class="weeklyContentSection">
-                    <span class="weeklyContentSection">
+                <div class="contentSection">
+                    <span class="contentSection">
                         <i class="fas fa-arrow-circle-up"></i>
-                        <strong>Best:</strong> goes here.
+                        <strong>Best:</strong> {{best}}
                     </span>
                     <br>
-                    <span class="weeklyContentSection">
+                    <span class="contentSection">
                         <i class="fas fa-arrow-circle-down"></i>
-                        <strong>Worst:</strong> goes here.
+                        <strong>Worst:</strong> {{worst}}
                     </span>
                     <br>
-                    <span class="weeklyContentSection">
+                    <span class="contentSection">
                         <i class="fas fa-arrow-circle-right"></i>
-                        <strong>Next:</strong> goes here.
+                        <strong>Next:</strong> {{next}}
                     </span>
                 </div>
 
             </div>
 
-            <div class="card-footer bg-transparent" id="habitsRow">
+            <div class="card-footer bg-transparent habitsRow">
                 <div>
                     <span>
                         <i class="fas fa-running"></i>
@@ -79,6 +58,7 @@
                 </div>
             </div>
         </div>
+        {{/each}}
 
     </div>
 </div>

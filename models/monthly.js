@@ -1,19 +1,16 @@
-module.exports = function(sequelize, DataTypes) {
-  var Monthly = sequelize.define("Monthlies", {
-    highlight: DataTypes.STRING,
-    positive: DataTypes.STRING,
-    negative: DataTypes.STRING
-  });
-
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Monthly = sequelize.define('Monthly', {
+    remember: DataTypes.STRING,
+    start: DataTypes.STRING,
+    stop: DataTypes.STRING,
+    monthAt: DataTypes.STRING
+  }, {});
   Monthly.associate = function(models) {
-    // We're saying that a Monthly should belong to an Author
-    // A Monthly can't be created without an Author due to the foreign key constraint
-    Monthly.belongsTo(models.Author, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    // associations can be defined here
+    Monthly.belongsTo(models.User,{
+            foreignKey: 'userId'
+    })
   };
-
   return Monthly;
 };

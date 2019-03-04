@@ -1,26 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" href="#">Minima<strong>list</strong></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Daily <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Weekly</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Monthly</a>
-            </li>
-        </ul>
-        <span class="navbar-text">
-            Login
-        </span>
-    </div>
-</nav>
+
 
 {{!-- Daily card layout. --}}
 
@@ -30,17 +8,17 @@
         {{!-- Add new entry card. --}}
         <div class="card mb-3 col-sm-12 col-lg-6 col-xl-4">
             <div class="plusButton">
-                <span class="add">+</span>
+                <span class="add"><a href="/daily/new">+</a></span>
             </div>
         </div>
 
 
         {{!-- Main daily card. --}}
+            {{#each daily}}
         <div class="card mb-3 col-sm-12 col-lg-6 col-xl-4">
-
             <div class="card-header bg-transparent">
                 <div class="dailyTimeRow">
-                    <span>06:00</span> <span class="dateStamp"> 11451 </span> <span>10:30</span>
+                    <span>{{wakeup}}</span> <span class="dateStamp"> 11451 </span> <span>{{sleep}}</span>
                 </div>
             </div>
 
@@ -48,17 +26,17 @@
                 <div class="contentSection">
                     <span class="contentSection">
                         <i class="fas fa-flag"></i>
-                        <strong>Highlight:</strong> {{#each example}}{{/each}}
+                        <strong>Highlight:</strong> {{highlights}}
                     </span>
                     <br>
                     <span class="contentSection">
                         <i class="fas fa-arrow-up"></i>
-                        <strong>Positive:</strong> goes here...
+                        <strong>Positive:</strong> {{positive}}
                     </span>
                     <br>
                     <span class="contentSection">
                         <i class="fas fa-arrow-down"></i>
-                        <strong>Negative:</strong> goes here.
+                        <strong>Negative:</strong> {{negative}}
                     </span>
                     <br>
                 </div>
@@ -78,6 +56,7 @@
                 </div>
             </div>
         </div>
+        {{/each}}
 
     </div>
     <div class="row blog-container daily">

@@ -1,30 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" href="#">Minima<strong>list</strong></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Daily</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Weekly</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Monthly <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-        <span class="navbar-text" id="learnMore">
-            Learn More
-        </span>
-        <div> <p>   </p></div>
-        <span class="navbar-text">
-            Login
-        </span>
-    </div>
-</nav>
+
 
 {{!-- Monthly card layout. --}}
 
@@ -33,13 +7,14 @@
 
         {{!-- Add new entry card. --}}
         <div class="card mb-3 col-sm-12 col-lg-6 col-xl-4">
-            <div id="plusButton">
-                <span>+</span>
+            <div class="plusButton">
+                <span class="add"><a href="/monthly/new">+</a></span>
             </div>
         </div>
 
 
         {{!-- Main monthly card. --}}
+        {{#each monthly}}
         <div class="card mb-3 col-sm-12 col-lg-6 col-xl-4">
 
             <div class="card-header bg-transparent">
@@ -50,26 +25,26 @@
             </div>
 
             <div class="card-body">
-                <div class="monthlyContentSection">
-                    <span class="monthlyContentSection">
+                <div class="contentSection">
+                    <span class="contentSection">
                         <i class="fas fa-history"></i>
-                        <strong>Remember:</strong> goes here.
+                        <strong>Remember:</strong> {{remember}}
                     </span>
                     <br>
-                    <span class="monthlyContentSection">
+                    <span class="contentSection">
                         <i class="fas fa-stopwatch"></i>
-                        <strong>Start:</strong> goes here.
+                        <strong>Start:</strong> {{start}}
                     </span>
                     <br>
-                    <span class="monthlyContentSection">
+                    <span class="contentSection">
                         <i class="fas fa-ban"></i>
-                        <strong>Stop:</strong> goes here.
+                        <strong>Stop:</strong> {{stop}}
                     </span>
                 </div>
 
             </div>
 
-            <div class="card-footer bg-transparent" id="habitsRow">
+            <div class="card-footer bg-transparent habitsRow">
                 <div>
                     <span>
                         <i class="fas fa-running"></i>
@@ -83,6 +58,7 @@
                 </div>
             </div>
         </div>
+        {{/each}}
 
     </div>
 </div>
