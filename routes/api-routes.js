@@ -50,7 +50,7 @@ module.exports = function (app) {
 
         
         console.log('=========days alive=======')
-        console.log((Moment([1986, 4, 24]).diff([2019,3,4],'days'))* -1)
+        console.log(((Moment([1986, 4, 24]).diff([2019,3,4],'days'))* -1))-1)
         console.log('=========days alive=======')
         console.log('=========month=======')
         console.log(Moment().format('dddd')  )
